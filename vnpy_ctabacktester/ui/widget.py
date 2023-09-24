@@ -351,7 +351,7 @@ class BacktesterManager(QtWidgets.QWidget):
         old_setting: dict = self.settings[class_name]
         dialog: BacktestingSettingEditor = BacktestingSettingEditor(class_name, old_setting)
         i: int = dialog.exec()
-        if i != dialog.Accepted:
+        if i != dialog.DialogCode.Accepted:
             return
 
         new_setting: dict = dialog.get_setting()
@@ -401,7 +401,7 @@ class BacktesterManager(QtWidgets.QWidget):
         parameters: dict = self.settings[class_name]
         dialog: OptimizationSettingEditor = OptimizationSettingEditor(class_name, parameters)
         i: int = dialog.exec()
-        if i != dialog.Accepted:
+        if i != dialog.DiglogCode.Accepted:
             return
 
         optimization_setting, use_ga, max_workers = dialog.get_setting()
@@ -589,7 +589,7 @@ class StatisticsMonitor(QtWidgets.QTableWidget):
         self.horizontalHeader().setSectionResizeMode(
             QtWidgets.QHeaderView.Stretch
         )
-        self.setEditTriggers(self.NoEditTriggers)
+        self.setEditTriggers(self.EditTrigger.NoEditTriggers)
 
         for row, key in enumerate(self.KEY_NAME_MAP.keys()):
             cell: QtWidgets.QTableWidgetItem = QtWidgets.QTableWidgetItem()
